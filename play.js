@@ -11,6 +11,11 @@ const connect = function() {
     console.log(message);
   });
 
+  // Handle connection errors
+  conn.on("error", (err) => {
+    console.error("Connection error:", err.message);
+  });
+
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
