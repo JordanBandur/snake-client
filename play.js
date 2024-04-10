@@ -3,12 +3,12 @@ const net = require("net");
 // establishes a connection with the game server
 const connect = function() {
   const conn = net.createConnection({
-    host: '172.20.92.55',
+    host: 'localhost',
     port: '50541'
   });
   // server sends message when kicked for idling
-  conn.on("data", () => {
-    console.log('Poor snake got hungry and died.');
+  conn.on("data", (message) => {
+    console.log(message);
     conn.end();
   });
 
