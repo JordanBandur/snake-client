@@ -11,6 +11,15 @@ const setupInput = function(conn) {
   return stdin;
 };
 
+const message = function(num) {
+  const messages = {
+    1: "Say: Eat my scales!",
+    2: "Say: Later, lil bro!",
+    3: "Say: Know you place!"
+  };
+  connection.write(messages[num]);
+};
+
 const handleUserInput = function(key) {
   switch (key) {
   case "\u0003": // ctrl + c
@@ -32,6 +41,11 @@ const handleUserInput = function(key) {
   case 'd':
     console.log('Moving snake right');
     connection.write("Move: right");
+    break;
+  case '1':
+  case '2':
+  case '3':
+    message(key);
     break;
 
   default:
