@@ -11,25 +11,31 @@ const setupInput = function(conn) {
   return stdin;
 };
 
-const handleUserInput = function(key) { // Allows user to exit the game using ctrl + c
-  if (key === "\u0003") {
+const handleUserInput = function(key) {
+  switch (key) {
+  case "\u0003": // ctrl + c
+    console.log('Exiting game...');
     process.exit();
-  }
-  if (key === 'w') {
-    console.log('Moving up');
+    break;
+  case 'w':
+    console.log('Moving snake up');
     connection.write("Move: up");
-  }
-  if (key === 'a') {
-    console.log('Moving left');
+    break;
+  case 'a':
+    console.log('Moving snake left');
     connection.write("Move: left");
-  }
-  if (key === 's') {
-    console.log('Moving down');
+    break;
+  case 's':
+    console.log('Moving snake down');
     connection.write("Move: down");
-  }
-  if (key === 'd') {
-    console.log('Moving right');
+    break;
+  case 'd':
+    console.log('Moving snake right');
     connection.write("Move: right");
+    break;
+
+  default:
+    break;
   }
 };
 
