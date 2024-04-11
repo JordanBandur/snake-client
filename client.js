@@ -1,18 +1,18 @@
 const net = require("net");
+const { IP, PORT, INITIALS } = require("./constants");
+
 
 // establishes a connection with the game server
 const connect = function() {
   const conn = net.createConnection({
-    host: 'localhost',
-    port: 50541,
+    host: IP,
+    port: PORT,
   });
-
-  const name = "Name: JB";
 
   // Sends client a message upon successful connection
   conn.on("connect", () => {
     console.log('Successfully connected to game server');
-    conn.write(name);
+    conn.write(INITIALS);
   });
 
   // server sends message when kicked for idling
